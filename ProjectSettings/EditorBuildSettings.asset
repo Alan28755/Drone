@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/OutdoorsScene.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
-  - enabled: 1
-    path: Assets/Procedural Worlds/HDRP Time Of Day/Demo Scene/TOD Demo.unity
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Plugins/Procedural Worlds/HDRP Time Of Day/Demo Scene/TOD Demo.unity
     guid: ff3b8a768bb08ef4d85f6d7eb989a399
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 630842805374e274eb11e58847d61a52
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: 9f5cae22dcf152d4fb55cfa82f5ae3e1
   m_configObjects: {}
