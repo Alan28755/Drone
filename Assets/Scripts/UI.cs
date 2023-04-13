@@ -14,6 +14,15 @@ public class UI : MonoBehaviour
     {
         SceneManager.LoadScene("Test");
     }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+    public void SettingsButton()
+    {
+        SceneManager.LoadScene("SettingsScene");
+    }
     // Start is called before the first frame update
     void Start()
     {
