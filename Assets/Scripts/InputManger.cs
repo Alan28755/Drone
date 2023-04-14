@@ -17,6 +17,10 @@ public class InputManger : MonoBehaviour
     private GameObject _editMenu;
 
 
+    public GameObject captureCamera;
+    private GameObject _mainCamera;
+    public GameObject captureVideo;
+
     //界面上方选项菜单的枚举
     enum MenuButtons
     {
@@ -39,6 +43,8 @@ public class InputManger : MonoBehaviour
 
         _editMenu = editWeather;
         _editMenu.SetActive(true);
+
+        _mainCamera = GameObject.FindWithTag("MainCamera");
     }
 
     void Update()
@@ -49,6 +55,13 @@ public class InputManger : MonoBehaviour
             menu.SetActive(_menuActive);
         }
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            captureCamera.transform.position = _mainCamera.transform.position;
+            captureCamera.transform.rotation = _mainCamera.transform.rotation;
+            captureVideo.transform.position = _mainCamera.transform.position;
+            captureVideo.transform.rotation = _mainCamera.transform.rotation;
+        }
 
     }
     public void ClickWeatherButton()
