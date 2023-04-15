@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
+using Evereal.VideoCapture;
 
 public class InputManger : MonoBehaviour
 {
@@ -17,9 +19,18 @@ public class InputManger : MonoBehaviour
     private GameObject _editMenu;
 
 
-    public GameObject captureCamera;
     private GameObject _mainCamera;
     public GameObject captureVideo;
+
+
+    //获取录制相机
+    [SerializeField] private Camera captureCamera;
+
+
+
+    //获取videoCapture
+    [SerializeField] private VideoCapture videoCapture;
+    [SerializeField] private TMPro.TMP_Text capture;
 
     //界面上方选项菜单的枚举
     enum MenuButtons
@@ -32,6 +43,11 @@ public class InputManger : MonoBehaviour
 
     private MenuButtons _menuButtons;
 
+
+    private void Awake()
+    {
+        Application.runInBackground = true;
+    }
 
     void Start()
     {
@@ -59,10 +75,26 @@ public class InputManger : MonoBehaviour
         {
             captureCamera.transform.position = _mainCamera.transform.position;
             captureCamera.transform.rotation = _mainCamera.transform.rotation;
-            captureVideo.transform.position = _mainCamera.transform.position;
-            captureVideo.transform.rotation = _mainCamera.transform.rotation;
+            // captureVideo.transform.position = _mainCamera.transform.position;
+            // captureVideo.transform.rotation = _mainCamera.transform.rotation;
         }
 
+        if (videoCapture.status == CaptureStatus.PENDING)
+        {
+            capture.SetText("混合中");
+        }
+        else if (videoCapture.status == CaptureStatus.STOPPED)
+        {
+            capture.SetText("编码中");
+        }
+        else if (videoCapture.status == CaptureStatus.READY)
+        {
+            capture.SetText("录制");
+        }
+        else if (videoCapture.status == CaptureStatus.STARTED)
+        {
+            capture.SetText("停止");
+        }
     }
     public void ClickWeatherButton()
     {
@@ -86,5 +118,23 @@ public class InputManger : MonoBehaviour
         _editMenu.SetActive(false);
         _editMenu = editCameras;
         _editMenu.SetActive(true);
+    }
+
+    public void CaptureButtonClick()
+    {
+        if (videoCapture.status == CaptureStatus.READY)
+        {
+            videoCapture.StartCapture();
+        }
+        else if(videoCapture.status==CaptureStatus.STARTED)
+        {
+            videoCapture.StopCapture();
+        }
+
+    }
+
+    public void BrowserButtonClick()
+    {
+        Utils.BrowseFolder(videoCapture.saveFolder);
     }
 }
