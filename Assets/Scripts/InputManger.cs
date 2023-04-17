@@ -120,15 +120,24 @@ public class InputManger : MonoBehaviour
         _editMenu.SetActive(true);
     }
 
+    //录制按钮
     public void CaptureButtonClick()
     {
         if (videoCapture.status == CaptureStatus.READY)
         {
+            //开始录制
             videoCapture.StartCapture();
+            //无人机开始飞行
+            GameObject drone = GameObject.FindWithTag("Drone");
+            drone.GetComponent<FlyingDroneScript>().enabled=true;
         }
         else if(videoCapture.status==CaptureStatus.STARTED)
         {
+            //停止录制
             videoCapture.StopCapture();
+            //无人机停止飞行
+            GameObject drone = GameObject.FindWithTag("Drone");
+            drone.GetComponent<FlyingDroneScript>().enabled=false;
         }
 
     }
