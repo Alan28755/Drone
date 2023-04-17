@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3015.1426, g: 2672.1445, b: 2663.496, a: 1}
+  m_IndirectSpecularColor: {r: 3047.125, g: 2802.2578, b: 3163.207, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -425,6 +425,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021790677795057055, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590075680}
+    - target: {fileID: 5021790677795057055, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ffbc7388b09a84b8fb0f26801cd887, type: 3}
@@ -5149,6 +5159,7 @@ GameObject:
   - component: {fileID: 590075677}
   - component: {fileID: 590075678}
   - component: {fileID: 590075679}
+  - component: {fileID: 590075680}
   m_Layer: 0
   m_Name: InputManger
   m_TagString: Untagged
@@ -5226,6 +5237,18 @@ MonoBehaviour:
     type: 3}
   addPoint: {fileID: 2074622632}
   deletePoint: {fileID: 1682784558}
+--- !u!114 &590075680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590075675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e6da23b43b5a84c9bb6ce8f7d9fa41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &601591187
 GameObject:
   m_ObjectHideFlags: 0
@@ -7480,6 +7503,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021790677795057055, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590075680}
+    - target: {fileID: 5021790677795057055, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ffbc7388b09a84b8fb0f26801cd887, type: 3}
@@ -12767,7 +12800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1482208618
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13430,6 +13463,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021790677795057055, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590075677}
+    - target: {fileID: 5021790677795057055, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CallMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021790677795057055, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputManger, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ffbc7388b09a84b8fb0f26801cd887, type: 3}
@@ -16039,7 +16087,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810344614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1669.8, y: 561, z: -706.979}
+  m_LocalPosition: {x: 922.5954, y: 591.132, z: -1591.4661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16090,7 +16138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameters:
-    albedo: {r: 0.7845624, g: 0.9011573, b: 1.0811718, a: 1.092731}
+    albedo: {r: 0.7845624, g: 0.9011573, b: 1, a: 1}
     meanFreePath: 785.2753
     anisotropy: 0
     volumeMask: {fileID: 0}

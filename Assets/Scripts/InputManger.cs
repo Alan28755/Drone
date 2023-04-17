@@ -67,8 +67,7 @@ public class InputManger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _menuActive = !_menuActive;
-            menu.SetActive(_menuActive);
+            CallMenu();
         }
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -96,6 +95,13 @@ public class InputManger : MonoBehaviour
             capture.SetText("停止");
         }
     }
+
+    public void CallMenu()
+    {
+        _menuActive = !_menuActive;
+        menu.SetActive(_menuActive);
+    }
+
     public void ClickWeatherButton()
     {
         _menuButtons = MenuButtons.Weather;
