@@ -4,31 +4,27 @@ using UnityEngine;
 
 public class ClickMove : MonoBehaviour
 {
-    private Transform _myTransform;
-    private Vector3 _selfScenePosition;
-    private Camera _cam;
+    private Vector3 _mOffset;//鼠标位置距离物体中心的偏移
+    private float _mZCoord;//物体在摄像坐标系下的深度
 
-    void Start()
+    //每次鼠标在物体按下时获取物体深度和偏移
+    void OnMouseDown()
     {
-        _myTransform = transform;
-        _cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-
-        _selfScenePosition = _cam.WorldToScreenPoint(_myTransform.position);
+        _mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+        // Store offset = gameobject world pos - mouse world pos
+        _mOffset = gameObject.transform.position - GetMouseAsWorldPoint();
     }
-
+    //获取当前鼠标在世界空间下的位置(摄像坐标系下的鼠标深度与物体相同)
+    private Vector3 GetMouseAsWorldPoint()
+    {
+        Vector3 mousePoint = Input.mousePosition;
+        mousePoint.z = _mZCoord;
+        return Camera.main.ScreenToWorldPoint(mousePoint);
+    }
+    //鼠标在物体上拖得时更新物体世界坐标
     void OnMouseDrag()
     {
-        //获取拖拽点鼠标坐标
-        // print(Input.mousePosition.x + "     y  " + Input.mousePosition.y + "     z  " + Input.mousePosition.z);
-        //新的屏幕点坐标
-        Vector3 currentScenePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, _selfScenePosition.z);
-        //将屏幕坐标转换为世界坐标
-        Vector3 crrrentWorldPosition = _cam.ScreenToWorldPoint(currentScenePosition);
-        //设置对象位置为鼠标的世界位置
-        _myTransform.position = crrrentWorldPosition;
-        //更新对象屏幕坐标
-        _selfScenePosition = _cam.WorldToScreenPoint(_myTransform.position);
-
+        transform.position = GetMouseAsWorldPoint() + _mOffset;
     }
 
 }
