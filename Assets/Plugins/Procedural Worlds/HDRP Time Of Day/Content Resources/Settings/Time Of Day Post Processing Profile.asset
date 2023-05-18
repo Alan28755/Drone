@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7852275008899800895
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90df30d4761bbd42bfd71603f4a413f, type: 3}
+  m_Name: Infrared
+  m_EditorClassIdentifier: 
+  active: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &-6292643009772601121
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -64,16 +80,16 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1.0754287
+    m_Value: 1.2768722
   intensity:
     m_OverrideState: 1
-    m_Value: 0.475071
+    m_Value: 0.4077372
   scatter:
     m_OverrideState: 1
-    m_Value: 0.5171875
+    m_Value: 0.5015568
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.9881274, g: 0.9713839, b: 0.96199, a: 1}
+    m_Value: {r: 0.9974671, g: 0.993895, b: 0.9918909, a: 1}
   dirtTexture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
@@ -107,13 +123,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {r: 0.28489512, g: 0.28489512, b: 0.28489512, a: 1}
+    m_Value: {r: 0.29543293, g: 0.29543293, b: 0.29543293, a: 1}
   highlights:
     m_OverrideState: 1
-    m_Value: {r: 0.7100021, g: 0.7100021, b: 0.7100021, a: 1}
+    m_Value: {r: 0.6665028, g: 0.6665028, b: 0.6665028, a: 1}
   balance:
     m_OverrideState: 1
-    m_Value: 6.230607
+    m_Value: 3.361971
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +153,7 @@ MonoBehaviour:
   - {fileID: 8538171497276844862}
   - {fileID: 1918612227746590130}
   - {fileID: -6292643009772601121}
+  - {fileID: -7852275008899800895}
 --- !u!114 &929332231747127923
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -158,10 +175,10 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.51692194
+    m_Value: 0.50231814
   directLightingStrength:
     m_OverrideState: 1
-    m_Value: 0.49966
+    m_Value: 0.49994478
   radius:
     m_OverrideState: 1
     m_Value: 1
@@ -234,9 +251,6 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 3
-  useFullACES:
-    m_OverrideState: 1
-    m_Value: 1
   toeStrength:
     m_OverrideState: 1
     m_Value: 0.409
@@ -261,33 +275,6 @@ MonoBehaviour:
   lutContribution:
     m_OverrideState: 0
     m_Value: 1
-  neutralHDRRangeReductionMode:
-    m_OverrideState: 0
-    m_Value: 2
-  acesPreset:
-    m_OverrideState: 1
-    m_Value: 4
-  fallbackMode:
-    m_OverrideState: 0
-    m_Value: 1
-  hueShiftAmount:
-    m_OverrideState: 0
-    m_Value: 0
-  detectPaperWhite:
-    m_OverrideState: 0
-    m_Value: 0
-  paperWhite:
-    m_OverrideState: 1
-    m_Value: 300
-  detectBrightnessLimits:
-    m_OverrideState: 0
-    m_Value: 1
-  minNits:
-    m_OverrideState: 0
-    m_Value: 0.005
-  maxNits:
-    m_OverrideState: 0
-    m_Value: 1000
 --- !u!114 &1918612227746590130
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -321,10 +308,10 @@ MonoBehaviour:
     m_Value: 2.5
   farFocusStart:
     m_OverrideState: 1
-    m_Value: 124.96062
+    m_Value: 169.69106
   farFocusEnd:
     m_OverrideState: 1
-    m_Value: 1019.09204
+    m_Value: 1224.6499
   m_NearSampleCount:
     m_OverrideState: 1
     m_Value: 4
@@ -346,9 +333,6 @@ MonoBehaviour:
   m_PhysicallyBased:
     m_OverrideState: 1
     m_Value: 0
-  m_LimitManualRangeNearBlur:
-    m_OverrideState: 0
-    m_Value: 0
 --- !u!114 &3355889720560766447
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -364,7 +348,7 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 1.5120001
+    m_Value: 0.17948067
   tint:
     m_OverrideState: 1
     m_Value: 0
@@ -386,16 +370,16 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 9.40625
+    m_Value: 9.839551
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.97714186, g: 0.97714186, b: 0.97714186, a: 1}
+    m_Value: {r: 0.92432237, g: 0.92432237, b: 0.92432237, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 15.83325
+    m_Value: 15.512128
 --- !u!114 &8538171497276844862
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -436,16 +420,16 @@ MonoBehaviour:
     m_Value: 0
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.19884725, g: 0.21441622, b: 0.24288845, a: 1}
+    m_Value: {r: 0.19645031, g: 0.21425176, b: 0.24461983, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.2653
+    m_Value: 0.2513051
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.6153
+    m_Value: 0.6013051
   roundness:
     m_OverrideState: 0
     m_Value: 1

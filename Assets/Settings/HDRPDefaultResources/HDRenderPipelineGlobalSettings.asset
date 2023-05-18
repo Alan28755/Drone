@@ -64,20 +64,11 @@ MonoBehaviour:
   m_RenderPipelineResources: {fileID: 11400000, guid: 3ce144cff5783da45aa5d4fdc2da14b7,
     type: 2}
   m_RenderPipelineRayTracingResources: {fileID: 0}
-  beforeTransparentCustomPostProcesses:
-  - UnityEngine.Rendering.HighDefinition.EnviroHDRPVolumeClouds, Assembly-CSharp,
-    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - UnityEngine.Rendering.HighDefinition.EnviroHDRPFog, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  - UnityEngine.Rendering.HighDefinition.EnviroHDRPDistanceBlur, Assembly-CSharp,
-    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  beforePostProcessCustomPostProcesses:
-  - UnityEngine.Rendering.HighDefinition.EnviroHDRPSunShafts, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  - UnityEngine.Rendering.HighDefinition.EnviroHDRPMoonShafts, Assembly-CSharp, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
+  beforeTransparentCustomPostProcesses: []
+  beforePostProcessCustomPostProcesses: []
   afterPostProcessBlursCustomPostProcesses: []
-  afterPostProcessCustomPostProcesses: []
+  afterPostProcessCustomPostProcesses:
+  - Infrared, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   beforeTAACustomPostProcesses: []
   lightLayerName0: Light Layer default
   lightLayerName1: Light Layer 1
