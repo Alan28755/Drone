@@ -28,9 +28,26 @@ public class WayPointsEdit : MonoBehaviour
     //路径信息
     private WayPointsInfo _wayPointsInfo;
 
+    [SerializeField]
+    private Dropdown prefabsDropdown;
+
+
+    private List<Vector3> _vector3s;
     // Start is called before the first frame update
     void Start()
     {
+        _vector3s = new List<Vector3>();
+        _vector3s.Add(new Vector3(0.81f,3.75f,-5.62f));
+        _vector3s.Add(new Vector3(0.46f,0.69f,6.03f));
+        _vector3s.Add(new Vector3(-3.77f,3.75f,1.77f));
+        _vector3s.Add(new Vector3(2.82f,6.57f,-5.21f));
+        _vector3s.Add(new Vector3(1.51f,7.23f,8.2f));
+        _vector3s.Add(new Vector3(-1.97f,3.14f,-0.95f));
+        _vector3s.Add(new Vector3(1.51f,6.72f,-4.26f));
+        _vector3s.Add(new Vector3(-1.36f,4.36f,1.87f));
+        _vector3s.Add(new Vector3(0.26f,2.73f,-1.6f));
+
+
         wayPoints.transform.position=Vector3.zero;
         for (int i = 0; i < wayPoints.childCount; i++)
         {
@@ -47,6 +64,8 @@ public class WayPointsEdit : MonoBehaviour
 
         addPoint.onClick.AddListener(AddPoint);
         deletePoint.onClick.AddListener(DeletePoint);
+        prefabsDropdown.onValueChanged.AddListener(OnDropDownValueChanged);
+
 
         _drone = GameObject.FindWithTag("Drone").transform;
 
@@ -140,6 +159,15 @@ public class WayPointsEdit : MonoBehaviour
         _wayPointsInfo.positions.Clear();
         _wayPointsInfo.positions = new List<Vector3>(saveData.positions.ToArray());
 
+
+    }
+
+    private void OnDropDownValueChanged(int value)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            wayPoints.GetChild(i).position = _vector3s[value * 3 + i];
+        }
 
     }
 
