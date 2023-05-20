@@ -24,6 +24,10 @@ public class WayPointsEdit : MonoBehaviour
 
     [SerializeField] private Button deletePoint;
 
+
+    //路径信息
+    private WayPointsInfo _wayPointsInfo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,4 +131,16 @@ public class WayPointsEdit : MonoBehaviour
         pos[j] = float.Parse(value);
         wayPoints.GetChild(i).position = pos;
     }
+
+    private void LoadWayPointsInfo()
+    {
+        var json = SavingSystem.LoadFromPlayerPrefs("wayPoints");
+        var saveData = JsonUtility.FromJson<WayPointsInfo>(json);
+
+        _wayPointsInfo.positions.Clear();
+        _wayPointsInfo.positions = new List<Vector3>(saveData.positions.ToArray());
+
+
+    }
+
 }

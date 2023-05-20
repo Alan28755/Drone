@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Evereal.VideoCapture;
+using UnityEngine.SceneManagement;
 
 public class InputManger : MonoBehaviour
 {
@@ -23,15 +24,20 @@ public class InputManger : MonoBehaviour
     public GameObject captureVideo;
 
 
+    public Button returnToTitle;
     //获取录制相机
     [SerializeField] private Camera captureCamera;
 
+    //获取路径点
+    [SerializeField] private Transform wayPoints;
 
 
     //获取videoCapture
     [SerializeField] private VideoCapture videoCapture;
     [SerializeField] private TMPro.TMP_Text capture;
 
+
+    [SerializeField] private RenderTexture captureTexture;
     //界面上方选项菜单的枚举
     enum MenuButtons
     {
@@ -61,6 +67,7 @@ public class InputManger : MonoBehaviour
         _editMenu.SetActive(true);
 
         _mainCamera = GameObject.FindWithTag("MainCamera");
+        returnToTitle.onClick.AddListener(ReturnToTitle);
     }
 
     void Update()
@@ -102,6 +109,11 @@ public class InputManger : MonoBehaviour
         menu.SetActive(_menuActive);
     }
 
+    private void ReturnToTitle()
+    {
+        SceneManager.LoadScene("Scenes/StartScene");
+    }
+
     public void ClickWeatherButton()
     {
         _menuButtons = MenuButtons.Weather;
@@ -131,11 +143,15 @@ public class InputManger : MonoBehaviour
     {
         if (videoCapture.status == CaptureStatus.READY)
         {
+
             //开始录制
             videoCapture.StartCapture();
             //无人机开始飞行
             GameObject drone = GameObject.FindWithTag("Drone");
             drone.GetComponent<FlyingDroneScript>().enabled=true;
+
+
+
         }
         else if(videoCapture.status==CaptureStatus.STARTED)
         {
@@ -144,6 +160,10 @@ public class InputManger : MonoBehaviour
             //无人机停止飞行
             GameObject drone = GameObject.FindWithTag("Drone");
             drone.GetComponent<FlyingDroneScript>().enabled=false;
+            //恢复左下角摄像机显示
+            captureCamera.targetTexture = captureTexture;
+
+
         }
 
     }

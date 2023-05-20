@@ -74,28 +74,67 @@ Shader "Hidden/Shader/Infrared_process"
 
         float3 outColor = LOAD_TEXTURE2D_X(_InputTexture, positionSS).xyz;
 
-        float grayscale=lerp(outColor, Luminance(outColor).xxx, _Intensity).r;
 
+
+        float grayscale;
+        grayscale=lerp(outColor, Luminance(outColor).xxx, _Intensity).r;
+        // float grayscale=outColor.r;
+
+
+        // grayscale=0.7*outColor.r+0.5*outColor.g+outColor.b*0.3;
+
+        // grayscale=grayscale<0.2?grayscale*4:grayscale;
+        grayscale=saturate(grayscale);
         float3 falseColor;
 
         //伪彩色映射
-        falseColor.r=grayscale<0.5?0:(grayscale-0.5)/0.25;
-        falseColor.r=grayscale>0.75?1:falseColor.r;
 
-        falseColor.g=grayscale>0.25?(grayscale-0.25)/0.25:0;
-        falseColor.g=grayscale>0.5?1:falseColor.g;
-        falseColor.g=grayscale>0.75?(1-grayscale)/0.25:falseColor.g;
+        // falseColor.r=grayscale<0.6?(grayscale-0.5)*10:1;
+        // falseColor.r/=1.5;
+        //
+        // falseColor.g=grayscale<0.4?(grayscale-0.2)*5:1;
+        // falseColor.g=grayscale>0.6?(0.8-grayscale)*5:falseColor.g;
+        // falseColor.g/=1.5;
+        //
+        // falseColor.b=grayscale<0.2?(grayscale-0.0)*5:1;
+        // falseColor.b=grayscale>0.4?(0.5-grayscale)*10:falseColor.b;
+        // falseColor.b/=1.5;
+        //
+        // falseColor.g=grayscale>0.8?(grayscale-0.8)*5:falseColor.g;
+        // falseColor.b=grayscale>0.8?(grayscale-0.8)*5:falseColor.b;
 
-        falseColor.b=grayscale>0.25?1:grayscale/0.25;
-        falseColor.b=grayscale>0.5?(0.75-grayscale)/0.25:falseColor.b;
-        falseColor.b=grayscale>0.75?0:falseColor.b;
+
+        // falseColor.r=grayscale<0.5?0:(grayscale-0.5)/0.25;
+        // falseColor.r=grayscale>0.75?1:falseColor.r;
+        //
+        // falseColor.g=grayscale>0.25?(grayscale-0.25)/0.25:0;
+        // falseColor.g=grayscale>0.5?1:falseColor.g;
+        // falseColor.g=grayscale>0.75?(1-grayscale)/0.25:falseColor.g;
+        //
+        // falseColor.b=grayscale>0.25?1:grayscale/0.25;
+        // falseColor.b=grayscale>0.5?(0.75-grayscale)/0.25:falseColor.b;
+        // falseColor.b=grayscale>0.75?0:falseColor.b;
+
+
+        falseColor.r=1;
+        falseColor.r=grayscale<0.4?(grayscale-0.2)*5:falseColor.r;
+        falseColor.r=grayscale<0.2?0:falseColor.r;
+        falseColor.r/=1.5;
+
+        falseColor.g=1;
+        falseColor.g=grayscale<0.8?(grayscale-0.6)*5:falseColor.g;
+        falseColor.g=grayscale<0.6?0:falseColor.g;
+        falseColor.g/=1.5;
+
+        falseColor.b=1;
+        falseColor.b=grayscale<1?(grayscale-0.8)*5:falseColor.b;
+        falseColor.b=grayscale<0.8?0:falseColor.b;
+        falseColor.b=grayscale<0.6?(0.6-grayscale)*5:falseColor.b;
+        falseColor.b=grayscale<0.4?1:falseColor.b;
+        falseColor.b=grayscale<0.2?(grayscale-0)*5:falseColor.b;
+        falseColor.b/=1.5;
 
         return float4(falseColor,1);
-
-
-
-
-
         // return float4(lerp(outColor, Luminance(outColor).xxx, _Intensity), 1);
 
     }
