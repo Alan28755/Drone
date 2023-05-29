@@ -21,12 +21,12 @@ public class PathVisual : MonoBehaviour
         for (int i = 1; i < count-1; i++)
         {
             DrawBasics.MovingArrowsLine(transform.GetChild(i).position,transform.GetChild(i+1).position);
-            DrawShapes.Sphere(transform.GetChild(i).position, 0.1f,Color.yellow,
-                quaternion.identity,0.1f, i.ToString());
+            // DrawShapes.Sphere(transform.GetChild(i).position, 0.1f,Color.yellow,
+            //     quaternion.identity,0.1f, i.ToString());
         }
         DrawBasics.MovingArrowsLine(transform.GetChild(count-1).position,transform.GetChild(1).position);
-        DrawShapes.Sphere(transform.GetChild(count-1).position, 0.1f,Color.yellow,
-            quaternion.identity,0.1f, (count-1).ToString());
+        // DrawShapes.Sphere(transform.GetChild(count-1).position, 0.1f,Color.yellow,
+        //     quaternion.identity,0.1f, (count-1).ToString());
 
 
 
