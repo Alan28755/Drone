@@ -2250,10 +2250,10 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_advancedLightingSettings: 0
+    m_advancedLightingSettings: 1
     m_useSSGI: 1
     m_ambientSSGICompensation: 1
-    m_reflectionAmbientSSGICompensation: 1
+    m_reflectionAmbientSSGICompensation: 0
     m_ambientCompensationExposure: 0
     m_ambientCompensationAmount: 1.2
     m_compensationMode: 0
@@ -2568,7 +2568,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_useNonSSGIAmbientCorrection: 1
+    m_useNonSSGIAmbientCorrection: 0
     m_ambientIntensityMultiplier: 1
     m_ambientIntensity:
       serializedVersion: 2

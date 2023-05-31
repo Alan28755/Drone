@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3010.6406, g: 2685.83, b: 2720.8867, a: 1}
+  m_IndirectSpecularColor: {r: 3117.3691, g: 2865.461, b: 3222.7617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5342,7 +5342,7 @@ MonoBehaviour:
     mode: 2
     realtimeMode: 1
     lighting:
-      multiplier: 0.045983978
+      multiplier: 0.045863643
       weight: 1
       lightLayer: 1
       fadeDistance: 10000
@@ -8324,7 +8324,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883525611}
-  m_LocalRotation: {x: 0.97655004, y: 0.02244024, z: -0.17219213, w: 0.12726492}
+  m_LocalRotation: {x: 0.9763826, y: 0.022665646, z: -0.1721626, w: 0.12854327}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10396,7 +10396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LensFlareData: {fileID: 11400000, guid: b3c1c448178a21645b38f63b0dbcbc92, type: 2}
-  intensity: 0.6405863
+  intensity: 0.6394708
   maxAttenuationDistance: 100
   maxAttenuationScale: 100
   distanceAttenuationCurve:
@@ -10476,7 +10476,7 @@ MonoBehaviour:
   occlusionRadius: 0.1
   sampleCount: 32
   occlusionOffset: 0.05
-  scale: 0.6405863
+  scale: 0.6394708
   allowOffScreen: 0
 --- !u!114 &1069067692
 MonoBehaviour:
@@ -10496,7 +10496,7 @@ MonoBehaviour:
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
-  m_VolumetricDimmer: 1.252938
+  m_VolumetricDimmer: 1.252669
   m_LightUnit: 2
   m_FadeDistance: 10000
   m_VolumetricFadeDistance: 10000
@@ -10553,7 +10553,7 @@ MonoBehaviour:
     m_Override: 512
     m_UseOverride: 0
     m_Level: 3
-  m_ShadowDimmer: 0.9013051
+  m_ShadowDimmer: 0.901331
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
   m_UseContactShadow:
@@ -12208,9 +12208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441482e8936e35048a1dffac814e3ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Profile: {fileID: 0}
-  m_StaticLightingSkyUniqueID: 0
-  m_StaticLightingCloudsUniqueID: 0
+  m_Profile: {fileID: 11400000, guid: 6ebeea6945e8dcd48b56a0fc984b8cd9, type: 2}
+  m_StaticLightingSkyUniqueID: 4
+  m_StaticLightingCloudsUniqueID: 1
   m_StaticLightingVolumetricClouds: 0
 --- !u!4 &1271666156
 Transform:
@@ -12662,6 +12662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1298123940}
   - component: {fileID: 1298123939}
+  - component: {fileID: 1298123941}
   m_Layer: 0
   m_Name: HDRP Time Of Day
   m_TagString: Untagged
@@ -12696,7 +12697,7 @@ MonoBehaviour:
     m_simulate: 0
   m_reflectionProbeProfile: {fileID: 11400000, guid: 5118cfe8aaff54c4cbd03cdc5d477732,
     type: 2}
-  m_timeOfDay: 11.01
+  m_timeOfDay: 11
   m_directionY: 20
   m_useRayTracing: 0
   m_refreshOverrideVolume: 0
@@ -12740,7 +12741,7 @@ MonoBehaviour:
     m_stopNan: 0
     m_dithering: 0
   m_ignoreRealtimeGICheck: 0
-  m_savedTODTime: 11.01
+  m_savedTODTime: 11
   m_disableItems:
   - {fileID: 0}
   m_rayTracingSetup: 0
@@ -12809,8 +12810,8 @@ MonoBehaviour:
     m_weatherBlendProfile: {fileID: 11400000, guid: 3250a41b01c13684f983349e2882d638,
       type: 2}
     m_rayTracingVolume: {fileID: 1732896152}
-  m_currentFogColor: {r: 0.7845624, g: 0.9011573, b: 1.0811718, a: 1.092731}
-  m_currentLocalFogDistance: 785.2753
+  m_currentFogColor: {r: 0.7846615, g: 0.90108323, b: 1.0809181, a: 1.0925926}
+  m_currentLocalFogDistance: 785.35986
   m_interiorControllerData:
     m_useInteriorControllers: 1
     m_refreshControllerSystemsOnWeatherStart: 1
@@ -12837,7 +12838,7 @@ MonoBehaviour:
   m_volumeMasterParent: {fileID: 0}
   m_volumeDayParent: {fileID: 0}
   m_volumeNightParent: {fileID: 0}
-  CurrentTime: 0.45875
+  CurrentTime: 0.45833334
   IsDay: 1
 --- !u!4 &1298123940
 Transform:
@@ -12855,6 +12856,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1298123941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298123938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa771e1abe49494c93396fc384b624c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dayTimeOverrideVolumes: []
+  m_nightTimeOverrideVolumes: []
+  m_lastIsDayValue: 1
 --- !u!1 &1309059387
 GameObject:
   m_ObjectHideFlags: 0
@@ -13851,7 +13867,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413482851}
-  m_LocalRotation: {x: 0.2132665, y: 0.6723724, z: -0.2120033, w: 0.67637813}
+  m_LocalRotation: {x: 0.2132793, y: 0.67233163, z: -0.21199048, w: 0.67641866}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18418,11 +18434,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_componentType: 6
-  m_lightSource: {fileID: 0}
-  m_windZone: {fileID: 0}
+  m_lightSource: {fileID: 1069067693}
+  m_windZone: {fileID: 1413482854}
   m_componentVolume: {fileID: 1732896152}
   m_volumeProfile: {fileID: 11400000, guid: dbc9cabc9e6cf0d4181add8984354135, type: 2}
-  m_localFog: {fileID: 0}
+  m_localFog: {fileID: 1810344618}
 --- !u!114 &1732896152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19121,7 +19137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810344614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1496.8502, y: 532.5202, z: -904.8776}
+  m_LocalPosition: {x: 0.3376732, y: 3.7318144, z: 6.7495785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19172,8 +19188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameters:
-    albedo: {r: 0.7845624, g: 0.9011573, b: 1.0811718, a: 1.092731}
-    meanFreePath: 785.2753
+    albedo: {r: 0.7846615, g: 0.90108323, b: 1.0809181, a: 1.0925926}
+    meanFreePath: 785.35986
     anisotropy: 0
     volumeMask: {fileID: 0}
     textureScrollingSpeed: {x: 0, y: 0, z: 0}

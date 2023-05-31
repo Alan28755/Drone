@@ -15,10 +15,10 @@ MonoBehaviour:
   m_timeOfDayPostFXData:
     m_postProcessingQuality: 1
     m_colorGradingSettings: 0
-    m_bloomSettings: 0
+    m_bloomSettings: 1
     m_shadowToningSettings: 0
     m_vignetteSettings: 0
-    m_ambientOcclusionSettings: 0
+    m_ambientOcclusionSettings: 1
     m_depthOfFieldSettings: 0
     m_useColorGrading: 1
     m_useBloom: 1
@@ -95,7 +95,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 7
       m_NumAlphaKeys: 2
     m_saturation:
@@ -395,7 +394,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 7
       m_NumAlphaKeys: 2
     m_shadows:
@@ -425,7 +423,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     m_highlights:
@@ -455,7 +452,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     m_shadowBalance:
@@ -536,7 +532,6 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
       m_NumColorKeys: 7
       m_NumAlphaKeys: 2
     m_vignetteIntensity:

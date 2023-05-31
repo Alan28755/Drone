@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877a03bef431a847adca8ab343db3e1, type: 3}
   m_Name: RayTracingSettings
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   rayBias:
     m_OverrideState: 1
     m_Value: 0.001
@@ -86,15 +86,6 @@ MonoBehaviour:
   directionalShadowFallbackIntensity:
     m_OverrideState: 1
     m_Value: 1
-  buildMode:
-    m_OverrideState: 0
-    m_Value: 0
-  cullingMode:
-    m_OverrideState: 0
-    m_Value: 0
-  cullingDistance:
-    m_OverrideState: 0
-    m_Value: 1000
 --- !u!114 &-3246282755482565516
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -107,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384c4d03a551c44448145f4093304119, type: 3}
   m_Name: ScreenSpaceReflection
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 1
     m_Value: 3
@@ -141,27 +132,6 @@ MonoBehaviour:
   accumulationFactor:
     m_OverrideState: 0
     m_Value: 0.75
-  biasFactor:
-    m_OverrideState: 0
-    m_Value: 0.5
-  speedRejectionParam:
-    m_OverrideState: 0
-    m_Value: 0.5
-  speedRejectionScalerFactor:
-    m_OverrideState: 0
-    m_Value: 0.2
-  speedSmoothReject:
-    m_OverrideState: 0
-    m_Value: 0
-  speedSurfaceOnly:
-    m_OverrideState: 0
-    m_Value: 1
-  speedTargetOnly:
-    m_OverrideState: 0
-    m_Value: 1
-  enableWorldSpeedRejection:
-    m_OverrideState: 0
-    m_Value: 0
   m_RayMaxIterations:
     m_OverrideState: 1
     m_Value: 64
@@ -245,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ef2681fa3dc8c4fa031f044e68c63f, type: 3}
   m_Name: GlobalIllumination
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 1
     m_Value: 3
@@ -259,10 +229,10 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 3
   depthBufferThickness:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.1
   fullResolutionSS:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   m_MaxRaySteps:
     m_OverrideState: 1
@@ -462,21 +432,6 @@ MonoBehaviour:
   maximumIntensity:
     m_OverrideState: 1
     m_Value: 10
-  denoising:
-    m_OverrideState: 1
-    m_Value: 2
-  useAOVs:
-    m_OverrideState: 1
-    m_Value: 1
-  temporal:
-    m_OverrideState: 1
-    m_Value: 1
-  asyncDenoising:
-    m_OverrideState: 0
-    m_Value: 1
-  skyImportanceSampling:
-    m_OverrideState: 1
-    m_Value: 1
   tilingParameters:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 0, w: 0}

@@ -73,3 +73,15 @@ MonoBehaviour:
     GlobalNearFogMultiplier: 1
     GlobalFarFogMultiplier: 1
     GlobalFogHeightMultiplier: 1
+  - PresetName: New Preset 5
+    PresetImage: {fileID: 0}
+    RenameEnabled: 0
+    ReplaceImageEnabled: 0
+    TimeOfDay: 11.9
+    DirectionY: 340
+    CloudPreset: 4
+    GlobalLightIntensityMultiplier: 1
+    GlobalAmbientIntensityMultiplier: 1
+    GlobalNearFogMultiplier: 1
+    GlobalFarFogMultiplier: 1
+    GlobalFogHeightMultiplier: 1

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using System.Collections;
 
 public class DomeDroneScript : FlyingDroneSpecificScript {
@@ -15,7 +15,7 @@ public class DomeDroneScript : FlyingDroneSpecificScript {
 	private float rayStart = 0.4f;
 	private float rayLength = 0.3f;
     private bool soundPlaying = true;
-	
+
 	void Start () {
 		yScale = transform.localScale.y;
 	}
