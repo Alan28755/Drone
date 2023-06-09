@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Infrared
-  m_Shader: {fileID: 4800000, guid: 481ea334f7c41084fbc8fefe3a40f472, type: 3}
+  m_Name: InfraredWall0
+  m_Shader: {fileID: 4800000, guid: 38a4cf4d6667e8f4a90a91e8fdf0a9d8, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ADD_PRECOMPUTED_VELOCITY
@@ -24,7 +24,7 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Tempature:
+    - _Noise:
         m_Texture: {fileID: 2800000, guid: 488e28525e583e844b7e10b321100c29, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -56,7 +56,7 @@ Material:
     - _OpaqueCullMode: 2
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
-    - _RenderQueueType: 5
+    - _RenderQueueType: 1
     - _RequireSplitLighting: 0
     - _SrcBlend: 1
     - _StencilRef: 0
@@ -71,12 +71,6 @@ Material:
     - _StencilWriteMaskMV: 42
     - _SupportDecals: 1
     - _SurfaceType: 0
-    - _TessEdgeLength: 16
-    - _TessMax: 25
-    - _TessMaxDisp: 25
-    - _TessMin: 10
-    - _TessPhongStrength: 0.5
-    - _TessValue: 16
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
     - _TransparentSortPriority: 0
@@ -87,10 +81,9 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
-    - _editTemperature: 76.9
-    - _maxTemperatureK: 375
+    - _editTemperature: 84.1
+    - _maxTemperatureK: 360.8
     - _minTemperatureK: 0
-    - _offest: 0.1
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

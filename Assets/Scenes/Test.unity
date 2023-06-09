@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3117.3691, g: 2865.461, b: 3222.7617, a: 1}
+  m_IndirectSpecularColor: {r: 3126.3613, g: 2904.875, b: 3365.254, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -648,7 +648,7 @@ PrefabInstance:
     - target: {fileID: 5021790677795057054, guid: f7ffbc7388b09a84b8fb0f26801cd887,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5021790677795057054, guid: f7ffbc7388b09a84b8fb0f26801cd887,
         type: 3}
@@ -11112,7 +11112,7 @@ PrefabInstance:
     - target: {fileID: 5021790677795057054, guid: f7ffbc7388b09a84b8fb0f26801cd887,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5021790677795057054, guid: f7ffbc7388b09a84b8fb0f26801cd887,
         type: 3}
@@ -13867,7 +13867,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413482851}
-  m_LocalRotation: {x: 0.2132793, y: 0.67233163, z: -0.21199048, w: 0.67641866}
+  m_LocalRotation: {x: 0.21327929, y: 0.6723317, z: -0.21199049, w: 0.6764186}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19137,7 +19137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810344614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3376732, y: 3.7318144, z: 6.7495785}
+  m_LocalPosition: {x: 972.5427, y: 593.8338, z: -1370.9279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20269,6 +20269,16 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u5929\u6C14"
       objectReference: {fileID: 0}
+    - target: {fileID: 5021790677795057048, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021790677795057048, guid: f7ffbc7388b09a84b8fb0f26801cd887,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5021790677795057053, guid: f7ffbc7388b09a84b8fb0f26801cd887,
         type: 3}
       propertyPath: m_Name

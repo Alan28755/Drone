@@ -5,8 +5,10 @@ Shader "Infrared"
 	Properties
 	{
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
-		[ASEBegin]_Temperature("Temperature", 2D) = "white" {}
-		[ASEEnd]_offest("offest", Float) = 0
+		[ASEBegin]_Noise("Noise", 2D) = "white" {}
+		_editTemperature("editTemperature", Float) = 310
+		_minTemperatureK("minTemperatureK", Float) = 0
+		[ASEEnd]_maxTemperatureK("maxTemperatureK", Float) = 375
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
 		[HideInInspector] _RenderQueueType("Render Queue Type", Float) = 5
@@ -249,7 +251,6 @@ Shader "Infrared"
 				#include "Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/LightLoop/HDShadowLoop.hlsl"
 			#endif
 
-			#define ASE_NEEDS_FRAG_WORLD_VIEW_DIR
 			#pragma multi_compile_instancing
 
 
@@ -266,14 +267,12 @@ Shader "Infrared"
 				float4 positionCS : SV_Position;
 				float3 positionRWS : TEXCOORD0;
 				float4 ase_texcoord1 : TEXCOORD1;
-				float3 ase_normal : NORMAL;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START( UnityPerMaterial )
-			float _offest;
-			float4 _EmissionColor;
+						float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
 			float _AddPrecomputedVelocity;
@@ -327,9 +326,12 @@ Shader "Infrared"
 			#endif
 			CBUFFER_END
 
-			sampler2D _Temperature;
+			sampler2D _Noise;
 			UNITY_INSTANCING_BUFFER_START(Infrared)
-				UNITY_DEFINE_INSTANCED_PROP(float4, _Temperature_ST)
+				UNITY_DEFINE_INSTANCED_PROP(float4, _Noise_ST)
+				UNITY_DEFINE_INSTANCED_PROP(float, _editTemperature)
+				UNITY_DEFINE_INSTANCED_PROP(float, _minTemperatureK)
+				UNITY_DEFINE_INSTANCED_PROP(float, _maxTemperatureK)
 			UNITY_INSTANCING_BUFFER_END(Infrared)
 
 
@@ -439,7 +441,6 @@ Shader "Infrared"
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( o );
 
 				o.ase_texcoord1.xy = inputMesh.ase_texcoord.xy;
-				o.ase_normal = inputMesh.normalOS;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
 				o.ase_texcoord1.zw = 0;
@@ -581,14 +582,13 @@ Shader "Infrared"
 				float3 V = GetWorldSpaceNormalizeViewDir( input.positionRWS );
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float4 _Temperature_ST_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_Temperature_ST);
-				float2 uv_Temperature = packedInput.ase_texcoord1.xy * _Temperature_ST_Instance.xy + _Temperature_ST_Instance.zw;
-				float4 localWorldVar107 = float4( V , 0.0 );
-				(localWorldVar107).xyz = GetCameraRelativePositionWS((localWorldVar107).xyz);
-				float4 transform107 = mul(GetWorldToObjectMatrix(),localWorldVar107);
-				float dotResult90 = dot( transform107 , float4( packedInput.ase_normal , 0.0 ) );
-				float viewFactor104 = ( pow( ( 1.0 - saturate( dotResult90 ) ) , 0.6 ) * 0.35 );
-				float temperature9 = saturate( ( tex2D( _Temperature, uv_Temperature ).r + _offest + viewFactor104 ) );
+				float4 _Noise_ST_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_Noise_ST);
+				float2 uv_Noise = packedInput.ase_texcoord1.xy * _Noise_ST_Instance.xy + _Noise_ST_Instance.zw;
+				float _editTemperature_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_editTemperature);
+				float _minTemperatureK_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_minTemperatureK);
+				float temp_output_1_0_g1 = _minTemperatureK_Instance;
+				float _maxTemperatureK_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_maxTemperatureK);
+				float temperature9 = saturate( ( 0.0 + ( ( tex2D( _Noise, uv_Noise ).r - 0.5 ) * 0.1 ) + ( ( _editTemperature_Instance - temp_output_1_0_g1 ) / ( _maxTemperatureK_Instance - temp_output_1_0_g1 ) ) ) );
 				float t316 = 0.75;
 				float t213 = 0.5;
 				float t10 = 0.25;
@@ -741,8 +741,7 @@ Shader "Infrared"
 			};
 
 			CBUFFER_START( UnityPerMaterial )
-			float _offest;
-			float4 _EmissionColor;
+						float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
 			float _AddPrecomputedVelocity;
@@ -1073,8 +1072,7 @@ Shader "Infrared"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphHeader.hlsl"
 
 			CBUFFER_START( UnityPerMaterial )
-			float _offest;
-			float4 _EmissionColor;
+						float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
 			float _AddPrecomputedVelocity;
@@ -1128,9 +1126,12 @@ Shader "Infrared"
 			#endif
 			CBUFFER_END
 
-			sampler2D _Temperature;
+			sampler2D _Noise;
 			UNITY_INSTANCING_BUFFER_START(Infrared)
-				UNITY_DEFINE_INSTANCED_PROP(float4, _Temperature_ST)
+				UNITY_DEFINE_INSTANCED_PROP(float4, _Noise_ST)
+				UNITY_DEFINE_INSTANCED_PROP(float, _editTemperature)
+				UNITY_DEFINE_INSTANCED_PROP(float, _minTemperatureK)
+				UNITY_DEFINE_INSTANCED_PROP(float, _maxTemperatureK)
 			UNITY_INSTANCING_BUFFER_END(Infrared)
 
 
@@ -1164,8 +1165,6 @@ Shader "Infrared"
 				float4 LightCoord : TEXCOORD1;
 				#endif
 				float4 ase_texcoord2 : TEXCOORD2;
-				float4 ase_texcoord3 : TEXCOORD3;
-				float3 ase_normal : NORMAL;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1234,15 +1233,10 @@ Shader "Infrared"
 				UNITY_SETUP_INSTANCE_ID( inputMesh );
 				UNITY_TRANSFER_INSTANCE_ID( inputMesh, o );
 
-				float3 ase_worldPos = GetAbsolutePositionWS( TransformObjectToWorld( (inputMesh.positionOS).xyz ) );
-				o.ase_texcoord3.xyz = ase_worldPos;
-				
 				o.ase_texcoord2.xy = inputMesh.uv0.xy;
-				o.ase_normal = inputMesh.normalOS;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
 				o.ase_texcoord2.zw = 0;
-				o.ase_texcoord3.w = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 				float3 defaultVertexValue = inputMesh.positionOS.xyz;
 				#else
@@ -1391,17 +1385,13 @@ Shader "Infrared"
 				float3 V = float3( 1.0, 1.0, 1.0 );
 
 				SurfaceDescription surfaceDescription = (SurfaceDescription)0;
-				float4 _Temperature_ST_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_Temperature_ST);
-				float2 uv_Temperature = packedInput.ase_texcoord2.xy * _Temperature_ST_Instance.xy + _Temperature_ST_Instance.zw;
-				float3 ase_worldPos = packedInput.ase_texcoord3.xyz;
-				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - ase_worldPos );
-				ase_worldViewDir = normalize(ase_worldViewDir);
-				float4 localWorldVar107 = float4( ase_worldViewDir , 0.0 );
-				(localWorldVar107).xyz = GetCameraRelativePositionWS((localWorldVar107).xyz);
-				float4 transform107 = mul(GetWorldToObjectMatrix(),localWorldVar107);
-				float dotResult90 = dot( transform107 , float4( packedInput.ase_normal , 0.0 ) );
-				float viewFactor104 = ( pow( ( 1.0 - saturate( dotResult90 ) ) , 0.6 ) * 0.35 );
-				float temperature9 = saturate( ( tex2D( _Temperature, uv_Temperature ).r + _offest + viewFactor104 ) );
+				float4 _Noise_ST_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_Noise_ST);
+				float2 uv_Noise = packedInput.ase_texcoord2.xy * _Noise_ST_Instance.xy + _Noise_ST_Instance.zw;
+				float _editTemperature_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_editTemperature);
+				float _minTemperatureK_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_minTemperatureK);
+				float temp_output_1_0_g1 = _minTemperatureK_Instance;
+				float _maxTemperatureK_Instance = UNITY_ACCESS_INSTANCED_PROP(Infrared,_maxTemperatureK);
+				float temperature9 = saturate( ( 0.0 + ( ( tex2D( _Noise, uv_Noise ).r - 0.5 ) * 0.1 ) + ( ( _editTemperature_Instance - temp_output_1_0_g1 ) / ( _maxTemperatureK_Instance - temp_output_1_0_g1 ) ) ) );
 				float t316 = 0.75;
 				float t213 = 0.5;
 				float t10 = 0.25;
@@ -1482,8 +1472,7 @@ Shader "Infrared"
 			int _PassValue;
 
 			CBUFFER_START( UnityPerMaterial )
-			float _offest;
-			float4 _EmissionColor;
+						float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
 			float _AddPrecomputedVelocity;
@@ -1806,8 +1795,7 @@ Shader "Infrared"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphHeader.hlsl"
 
 			CBUFFER_START( UnityPerMaterial )
-			float _offest;
-			float4 _EmissionColor;
+						float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
 			float _AddPrecomputedVelocity;
@@ -2157,8 +2145,7 @@ Shader "Infrared"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderGraphHeader.hlsl"
 
 			CBUFFER_START( UnityPerMaterial )
-			float _offest;
-			float4 _EmissionColor;
+						float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
 			float _AddPrecomputedVelocity;
@@ -2632,8 +2619,7 @@ Shader "Infrared"
 			float4 _SelectionID;
 
             CBUFFER_START( UnityPerMaterial )
-			float _offest;
-			float4 _EmissionColor;
+						float4 _EmissionColor;
 			float _RenderQueueType;
 			#ifdef _ADD_PRECOMPUTED_VELOCITY
 			float _AddPrecomputedVelocity;
@@ -3227,27 +3213,29 @@ Node;AmplifyShaderEditor.RangedFloatNode;14;-1272.343,-196.0453;Inherit;False;Co
 Node;AmplifyShaderEditor.RegisterLocalVarNode;16;-1087.343,-195.0453;Inherit;False;t3;-1;True;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;12;-1271.343,-287.0453;Inherit;False;Constant;_Float1;Float 1;1;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;11;-1275.343,-377.0453;Inherit;False;Constant;_Float0;Float 0;1;0;Create;True;0;0;0;False;0;False;0.25;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;76;-3864.658,17.66201;Inherit;False;InstancedProperty;_editTemperature;editTemperature;1;0;Create;True;0;0;0;False;0;False;310;76.9;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;76;-3864.658,17.66201;Inherit;False;InstancedProperty;_editTemperature;editTemperature;1;0;Create;True;0;0;0;False;0;False;310;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;77;-3851.348,-232.0084;Inherit;False;InstancedProperty;_minTemperatureK;minTemperatureK;2;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;78;-3862.348,-85.00823;Inherit;False;InstancedProperty;_maxTemperatureK;maxTemperatureK;3;0;Create;True;0;0;0;False;0;False;375;375;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;82;-2976.636,-606.7067;Inherit;False;3;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SaturateNode;94;-2725.31,-514.9886;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RegisterLocalVarNode;9;-2457.266,-387.5708;Inherit;False;temperature;-1;True;1;0;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;80;-3260.711,-512.4968;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.ViewDirInputsCoordNode;85;-4158.877,-1561.851;Inherit;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.DotProductOpNode;90;-3902.713,-1458.174;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SaturateNode;91;-3756.11,-1477.676;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;96;-3470.836,-1299.189;Inherit;False;Constant;_normalWeight;normalWeight;4;0;Create;True;0;0;0;False;0;False;0.35;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;True;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;Infrared;7f5cb9c3ea6481f469fdd856555439ef;True;Forward Unlit;0;0;Forward Unlit;9;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;1;0;True;_SrcBlend;0;True;_DstBlend;1;0;True;_AlphaSrcBlend;0;True;_AlphaDstBlend;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullModeForward;False;False;False;True;True;True;True;True;0;True;_ColorMaskTransparentVel;False;False;False;False;False;True;True;0;True;_StencilRef;255;False;;255;True;_StencilWriteMask;7;False;;3;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;0;True;_ZWrite;True;0;True;_ZTestDepthEqualForOpaque;False;True;1;LightMode=ForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;30;Surface Type;0;0;  Rendering Pass ;0;0;  Rendering Pass;1;0;  Blending Mode;0;0;  Receive Fog;1;0;  Distortion;0;0;    Distortion Mode;0;0;    Distortion Only;1;0;  Depth Write;1;0;  Cull Mode;0;0;  Depth Test;4;0;Double-Sided;0;0;Alpha Clipping;0;0;Motion Vectors;1;0;  Add Precomputed Velocity;0;0;Shadow Matte;0;0;Cast Shadows;1;0;DOTS Instancing;0;0;GPU Instancing;1;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;LOD CrossFade;0;0;0;8;True;True;True;True;True;True;False;True;False;;False;0
-Node;AmplifyShaderEditor.RangedFloatNode;77;-3873.348,-204.0084;Inherit;False;InstancedProperty;_minTemperatureK;minTemperatureK;2;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.FunctionNode;79;-3387.348,-181.0082;Inherit;False;Inverse Lerp;-1;;1;09cbe79402f023141a4dc1fddd4c9511;0;3;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RegisterLocalVarNode;9;-2814.129,-510.0627;Inherit;False;temperature;-1;True;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RegisterLocalVarNode;104;-2895.786,-1437.818;Inherit;False;viewFactor;-1;True;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SaturateNode;103;-3095.117,-546.7115;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;102;-3312.104,-544.3173;Inherit;False;3;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SamplerNode;8;-3947.501,-741.5745;Inherit;True;Property;_Temperature;Temperature;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;101;-3743.132,-496.8666;Inherit;False;Property;_offest;offest;4;0;Create;True;0;0;0;False;0;False;0;0.1;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.GetLocalVarNode;105;-3691.067,-367.7525;Inherit;False;104;viewFactor;1;0;OBJECT;;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;95;-3132.836,-1448.191;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.NormalVertexDataNode;87;-4401.616,-1250.762;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.WorldToObjectTransfNode;107;-4170.878,-1505.785;Inherit;False;1;0;FLOAT4;0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ViewDirInputsCoordNode;85;-4413.647,-1518.324;Inherit;False;World;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.DotProductOpNode;90;-3940.929,-1350.951;Inherit;False;2;0;FLOAT4;0,0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;92;-3587.599,-1493.081;Inherit;False;2;0;FLOAT;1;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;95;-3197.836,-1440.191;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.NormalVertexDataNode;87;-4422.721,-1374.972;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ObjectToWorldTransfNode;97;-4198.835,-1370.19;Inherit;False;1;0;FLOAT4;0,0,0,1;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;96;-3470.836,-1299.189;Inherit;False;Constant;_normalWeight;normalWeight;4;0;Create;True;0;0;0;False;0;False;0.35;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.PowerNode;93;-3400.798,-1513.081;Inherit;False;False;2;0;FLOAT;0;False;1;FLOAT;0.6;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;100;-3423.004,-852.0032;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0.1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.LightColorNode;99;-3663.004,-929.0032;Inherit;False;0;3;COLOR;0;FLOAT3;1;FLOAT;2
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;True;-1;2;Rendering.HighDefinition.HDUnlitGUI;0;13;Infrared;7f5cb9c3ea6481f469fdd856555439ef;True;Forward Unlit;0;0;Forward Unlit;9;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=HDRenderPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;5;True;7;d3d11;metal;vulkan;xboxone;xboxseries;playstation;switch;0;False;True;1;0;True;_SrcBlend;0;True;_DstBlend;1;0;True;_AlphaSrcBlend;0;True;_AlphaDstBlend;False;False;False;False;False;False;False;False;False;False;False;False;True;0;True;_CullModeForward;False;False;False;True;True;True;True;True;0;True;_ColorMaskTransparentVel;False;False;False;False;False;True;True;0;True;_StencilRef;255;False;;255;True;_StencilWriteMask;7;False;;3;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;0;True;_ZWrite;True;0;True;_ZTestDepthEqualForOpaque;False;True;1;LightMode=ForwardOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;30;Surface Type;0;0;  Rendering Pass ;0;0;  Rendering Pass;1;0;  Blending Mode;0;0;  Receive Fog;1;0;  Distortion;0;0;    Distortion Mode;0;0;    Distortion Only;1;0;  Depth Write;1;0;  Cull Mode;0;0;  Depth Test;4;0;Double-Sided;0;0;Alpha Clipping;0;0;Motion Vectors;1;0;  Add Precomputed Velocity;0;0;Shadow Matte;0;0;Cast Shadows;1;0;DOTS Instancing;0;0;GPU Instancing;1;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Vertex Position,InvertActionOnDeselection;1;0;LOD CrossFade;0;0;0;8;True;True;True;True;True;True;False;True;False;;False;0
+Node;AmplifyShaderEditor.SamplerNode;8;-4075.463,-488.4063;Inherit;True;Property;_Noise;Noise;0;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.FunctionNode;79;-3476.348,-140.0082;Inherit;False;Inverse Lerp;-1;;1;09cbe79402f023141a4dc1fddd4c9511;0;3;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;81;-3481.387,-374.4211;Inherit;False;Constant;_varing;varing;4;0;Create;True;0;0;0;False;0;False;0.1;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleSubtractOpNode;84;-3622.709,-498.9459;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0.5;False;1;FLOAT;0
 WireConnection;22;0;20;0
 WireConnection;22;1;21;0
 WireConnection;23;0;22;0
@@ -3313,23 +3301,25 @@ WireConnection;72;2;75;0
 WireConnection;10;0;11;0
 WireConnection;13;0;12;0
 WireConnection;16;0;14;0
+WireConnection;82;1;80;0
+WireConnection;82;2;79;0
+WireConnection;94;0;82;0
+WireConnection;9;0;94;0
+WireConnection;80;0;84;0
+WireConnection;80;1;81;0
+WireConnection;90;0;85;0
+WireConnection;90;1;97;0
 WireConnection;91;0;90;0
+WireConnection;92;1;91;0
+WireConnection;95;0;93;0
+WireConnection;95;1;96;0
+WireConnection;97;0;87;0
+WireConnection;93;0;92;0
+WireConnection;100;0;99;2
 WireConnection;0;0;72;0
 WireConnection;79;1;77;0
 WireConnection;79;2;78;0
 WireConnection;79;3;76;0
-WireConnection;9;0;103;0
-WireConnection;104;0;95;0
-WireConnection;103;0;102;0
-WireConnection;102;0;8;1
-WireConnection;102;1;101;0
-WireConnection;102;2;105;0
-WireConnection;95;0;93;0
-WireConnection;95;1;96;0
-WireConnection;107;0;85;0
-WireConnection;90;0;107;0
-WireConnection;90;1;87;0
-WireConnection;92;1;91;0
-WireConnection;93;0;92;0
+WireConnection;84;0;8;1
 ASEEND*/
-//CHKSM=565551F298AF36B1094D5A3738595AB394C21522
+//CHKSM=A19FB7AC1CB76ECB892722B2A993BCA298E6EF94
