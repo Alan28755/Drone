@@ -934,7 +934,7 @@ MonoBehaviour:
     m_cloudSettings: 0
     m_globalCloudType: 3
     m_useLocalClouds: 0
-    m_cloudPresets: 4
+    m_cloudPresets: 1
     m_volumetricDensityMultiplier:
       serializedVersion: 2
       m_Curve:
