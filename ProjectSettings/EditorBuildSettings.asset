@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SettingsScene.unity
     guid: e8c3095434874734597fea3c898e78eb
+  - enabled: 1
+    path: Assets/Scenes/scene01.unity
+    guid: 01545bd755e04104ca4c4bfb5cfa10b1
+  - enabled: 1
+    path: Assets/Scenes/InfraredDemoScene.unity
+    guid: 3cc88feb6bb6fa74583e2e97608eda28
   m_configObjects: {}

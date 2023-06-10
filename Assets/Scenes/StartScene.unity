@@ -832,10 +832,6 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: "\u65E0\u4EBA\u673A2"
       m_Image: {fileID: 0}
-    - m_Text: "\u65E0\u4EBA\u673A3"
-      m_Image: {fileID: 0}
-    - m_Text: "\u65E0\u4EBA\u673A4"
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1250,6 +1246,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e6da23b43b5a84c9bb6ce8f7d9fa41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  droneChoice: {fileID: 350536531}
+  sceneChoice: {fileID: 2072970877922544795}
+  droneImage: {fileID: 1913413108}
+  sceneImage: {fileID: 822125875}
+  drones:
+  - {fileID: 21300000, guid: d8c5cbd28e082874eae8c137208beaa9, type: 3}
+  - {fileID: 21300000, guid: 045e190f9b6a88a499b03b0306a9d781, type: 3}
+  scenes:
+  - {fileID: 21300000, guid: 34c9b06627566a64fb1d9facd64abaa3, type: 3}
+  - {fileID: 21300000, guid: 719c3e528fec81746baab462c4636e1b, type: 3}
+  - {fileID: 21300000, guid: 54fe3116cdcb3d84cad33e99158fca0d, type: 3}
 --- !u!4 &1008668196
 Transform:
   m_ObjectHideFlags: 0
@@ -2835,6 +2842,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2072970878430776971, guid: 1df836f87d50ad04fb36007849ab3618,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072970878430776971, guid: 1df836f87d50ad04fb36007849ab3618,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[0].m_Text
+      value: "\u573A\u666F1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072970878430776971, guid: 1df836f87d50ad04fb36007849ab3618,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Text
+      value: "\u6D4B\u8BD5\u573A\u666F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072970878430776971, guid: 1df836f87d50ad04fb36007849ab3618,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[2].m_Text
+      value: "\u7EA2\u5916\u6D4B\u8BD5"
+      objectReference: {fileID: 0}
     - target: {fileID: 2072970878430776981, guid: 1df836f87d50ad04fb36007849ab3618,
         type: 3}
       propertyPath: m_Name
@@ -2842,6 +2869,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1df836f87d50ad04fb36007849ab3618, type: 3}
+--- !u!114 &2072970877922544795 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2072970878430776971, guid: 1df836f87d50ad04fb36007849ab3618,
+    type: 3}
+  m_PrefabInstance: {fileID: 2072970877922544794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5021790678057421692
 PrefabInstance:
   m_ObjectHideFlags: 0

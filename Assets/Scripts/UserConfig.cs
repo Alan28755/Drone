@@ -8,6 +8,20 @@ public class UserConfig : MonoBehaviour
     public static UserConfig instance = null;
     private bool _isExist = false;
     private bool isInfrared = false;
+    private int _droneID;
+
+
+    public int DroneID
+    {
+        get
+        {
+            return _droneID;
+        }
+        set
+        {
+            _droneID = value;
+        }
+    }
 
     public bool IsInfrared
     {
