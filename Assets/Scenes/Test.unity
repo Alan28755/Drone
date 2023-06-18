@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3120.046, g: 2900.1108, b: 3365.9695, a: 1}
+  m_IndirectSpecularColor: {r: 3007.0645, g: 2683.289, b: 2720.6445, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13015,7 +13015,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413482851}
-  m_LocalRotation: {x: 0.21327929, y: 0.6723317, z: -0.21199049, w: 0.6764186}
+  m_LocalRotation: {x: 0.2132793, y: 0.67233163, z: -0.21199048, w: 0.67641866}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17913,7 +17913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810344614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1576.1134, y: 649.20715, z: -855.27026}
+  m_LocalPosition: {x: 668.87726, y: 567.4917, z: -1510.8599}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26651,7 +26651,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E0B \u8F7D \u901F \u5EA6"
+  m_Text: " \u66F4 \u65B0 \u901F \u5EA6"
 --- !u!224 &3130840832405974025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36498,7 +36498,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u81EA \u52A8 \u4E0B \u8F7D"
+  m_Text: " \u81EA \u52A8 \u66F4 \u65B0"
 --- !u!224 &8077694299058016945
 RectTransform:
   m_ObjectHideFlags: 0
