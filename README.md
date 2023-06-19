@@ -197,9 +197,9 @@ PBR的一个重要优点是，由于它基于物理原理，所以创建的材�
 
 ## 非功能性需求
 
-		* 提供足够多种类的环境，可供各种环境下无人机飞行视频拍摄的模拟。
-		* 提供足够多种类的无人机，可以满足训练识别不同无人机的需求
-		* 可导入外部无人机模型，真正实现定制化
+* 提供足够多种类的环境，可供各种环境下无人机飞行视频拍摄的模拟。
+* 提供足够多种类的无人机，可以满足训练识别不同无人机的需求
+* 可导入外部无人机模型，真正实现定制化
 
 ## 用户界面需求
 
@@ -209,7 +209,7 @@ PBR的一个重要优点是，由于它基于物理原理，所以创建的材�
 
 # 总体设计
 
-![pako_eNpdlN1OGkEUx1-F7LW-ABdNRPAbv8DPwYuNbCtpAUPxojEmJIBKlixUW7AsZYvFFGgEbGncrkJfZmdmeYsOOwMZnKv5_c8_mTPnzJlT4TAalASn8CYmHh85_K5AxEHWDMBKG94mTV1BxW-mYaCyYV00Yatk_s0cUI8LwFoDdT6hehXJGhNnAdQM01BwpoHz57iUwmUNtioopSH](README\pako_eNpdlN1OGkEUx1-F7LW-ABdNRPAbv8DPwYuNbCtpAUPxojEmJIBKlixUW7AsZYvFFGgEbGncrkJfZmdmeYsOOwMZnKv5_c8_mTPnzJlT4TAalASn8CYmHh85_K5AxEHWDMBKG94mTV1BxW-mYaCyYV00Yatk_s0cUI8LwFoDdT6hehXJGhNnAdQM01BwpoHz57iUwmUNtioopSH.png)
+![pako_eNpdlN1OGkEUx1-F7LW-ABdNRPAbv8DPwYuNbCtpAUPxojEmJIBKlixUW7AsZYvFFGgEbGncrkJfZmdmeYsOOwMZnKv5_c8_mTPnzJlT4TAalASn8CYmHh85_K5AxEHWDMBKG94mTV1BxW-mYaCyYV00Yatk_s0cUI8LwFoDdT6hehXJGhNnAdQM01BwpoHz57iUwmUNtioopSH](.\README\框架图.png)
 
 ## 天气模拟
 
@@ -613,7 +613,7 @@ Shader "Hidden/Shader/Infrared_process"
 
 ## 用户界面
 
-![pako_eNqNk8tPwjAcx_-VpmcOPi8969GT110WVnXKNjPGgRCSReQVQEMYGgOiPAxw4WFIMFPhn6Hd9l84ukAIkEnTQ9vf5_t7tY3BoCJgiOC1ElFlHOVk4A5N1EIYWEaHZsZWOe-8NpyqTod39ClN602PCeOgJioyID86aec8yrPMh6el2dLcbBruFoFj5A_ni46epc_vM9OkVROBI39-Due6pGrS](README/pako_eNqNk8tPwjAcx_-VpmcOPi8969GT110WVnXKNjPGgRCSReQVQEMYGgOiPAxw4WFIMFPhn6Hd9l84ukAIkEnTQ9vf5_t7tY3BoCJgiOC1ElFlHOVk4A5N1EIYWEaHZsZWOe-8NpyqTod39ClN602PCeOgJioyID86aec8yrPMh6el2dLcbBruFoFj5A_ni46epc_vM9OkVROBI39-Due6pGrS.png)
+![pako_eNqNk8tPwjAcx_-VpmcOPi8969GT110WVnXKNjPGgRCSReQVQEMYGgOiPAxw4WFIMFPhn6Hd9l84ukAIkEnTQ9vf5_t7tY3BoCJgiOC1ElFlHOVk4A5N1EIYWEaHZsZWOe-8NpyqTod39ClN602PCeOgJioyID86aec8yrPMh6el2dLcbBruFoFj5A_ni46epc_vM9OkVROBI39-Due6pGrS](README/用户界面.png)
 
 # 运行测试与改进
 

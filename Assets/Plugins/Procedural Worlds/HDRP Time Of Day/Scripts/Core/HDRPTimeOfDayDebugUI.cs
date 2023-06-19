@@ -93,6 +93,7 @@ namespace ProceduralWorlds.HDRPTOD
             }
         }
 
+        //设置时间
         public void SetTimeOfDay()
         {
             if (m_time != null && m_timeLabel != null)
@@ -101,6 +102,7 @@ namespace ProceduralWorlds.HDRPTOD
                 m_timeLabel.text = $"{m_time.value:0.00}";
             }
         }
+        //启用时间自动更新
         public void SetAutoUpdate()
         {
             if (m_autoUpdate != null && m_autoUpdateSpeed != null && m_autoUpdateLabel != null)
@@ -109,6 +111,7 @@ namespace ProceduralWorlds.HDRPTOD
                 m_autoUpdateLabel.text = $"{m_autoUpdateSpeed.value:0.00}";
             }
         }
+        //设置太阳方向
         public void SetDirection()
         {
             if (m_direction != null && m_directionLabel != null)
@@ -117,6 +120,7 @@ namespace ProceduralWorlds.HDRPTOD
                 m_directionLabel.text = $"{m_direction.value:0.00}";
             }
         }
+        //开始下雨
         public void StartStopRain()
         {
             if (HDRPTimeOfDay.Instance.WeatherActive())
@@ -128,6 +132,7 @@ namespace ProceduralWorlds.HDRPTOD
                 HDRPTimeOfDayAPI.StartWeather(HDRPTimeOfDayAPI.GetWeatherIDByName("Rain"));
             }
         }
+        //开始下雪
         public void StartStopSnow()
         {
             if (HDRPTimeOfDay.Instance.WeatherActive())

@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -36,6 +36,7 @@ public class CameraEdit : MonoBehaviour
         }
     }
 
+    //设置录制摄像机位置
     public void SetCameraPosition()
     {
         Vector3 position = new Vector3();
@@ -46,6 +47,7 @@ public class CameraEdit : MonoBehaviour
 
     }
 
+    //设置录制摄像机方位
     public void SetCameraRotation()
     {
         Quaternion rotation = new Quaternion();
