@@ -1,3 +1,7 @@
+[TOC]
+
+
+
 
 
 #  相关概念及理论基础
@@ -76,6 +80,14 @@
 
    道德和社会问题：虚拟仿真技术的使用也引发了一些道德和社会问题，例如其在军事和防御应用中的使用、数据隐私问题、以及虚拟仿真可能带来的心理影响等。
 
+
+
+
+
+
+
+
+
 # 项目关键问题分析及解决思路
 
 ## 环境与无人机自定义
@@ -146,6 +158,18 @@ PBR的一个重要优点是，由于它基于物理原理，所以创建的材�
 
 ​		YOLOv5是一种用于目标检测的深度学习模型，由一个开源社区在YOLOv4之后独立开发。"YOLO"代表"You Only Look Once"，它是一种一次性完成目标定位和分类的方法，与传统的两步目标检测方法（如R-CNN系列）相比，YOLO的优势在于速度快和实时性强。
 
+
+
+
+
+
+
+
+
+
+
+
+
 # 开发工具及环境比较分析
 
 * 游戏引擎：
@@ -185,6 +209,16 @@ PBR的一个重要优点是，由于它基于物理原理，所以创建的材�
 
 综上所述，本项目需要使用多种不同的开发工具和环境来实现不同的需求，这些工具和环境需要协同工作，以实现项目的目标。
 
+
+
+
+
+
+
+
+
+
+
 # 需求分析
 
 ## 功能性需求
@@ -206,6 +240,16 @@ PBR的一个重要优点是，由于它基于物理原理，所以创建的材�
 - **开始界面**：用户打开应用，看到无人机和场景的选择，可以选择进入设置界面或仿真界面。
 - **设置界面**：用户可以调整全局设置，如分辨率，然后返回开始界面。
 - **仿真界面**：用户可以配置无人机的飞行路线，设置天气，配置拍摄摄像头，然后渲染无人机的飞行视频。
+
+
+
+
+
+
+
+
+
+
 
 # 总体设计
 
@@ -615,6 +659,16 @@ Shader "Hidden/Shader/Infrared_process"
 
 ![pako_eNqNk8tPwjAcx_-VpmcOPi8969GT110WVnXKNjPGgRCSReQVQEMYGgOiPAxw4WFIMFPhn6Hd9l84ukAIkEnTQ9vf5_t7tY3BoCJgiOC1ElFlHOVk4A5N1EIYWEaHZsZWOe-8NpyqTod39ClN602PCeOgJioyID86aec8yrPMh6el2dLcbBruFoFj5A_ni46epc_vM9OkVROBI39-Due6pGrS](README/用户界面.png)
 
+
+
+
+
+
+
+
+
+
+
 # 运行测试与改进
 
 ## 开始界面：
@@ -637,6 +691,12 @@ Shader "Hidden/Shader/Infrared_process"
 
 ![image-20230619231546378](README/image-20230619231546378.png)
 
+
+
+
+
+
+
 # 总结与展望
 
 ## 目标和实现：
@@ -649,7 +709,7 @@ Shader "Hidden/Shader/Infrared_process"
 
  
 
-# 参考文献：
+# 参考文献
 
 [^1]:Unity Technologies. (2023). 高清渲染管线 (HDRP). Unity Documentation. https://docs.unity3d.com/cn/Packages/com.unity.render-pipelines.high-definition@7.4/manual/Getting-started-with-HDRP.html
 [^2]:张晟翀.一种红外图像伪彩色显示算法及其硬件设计[J].光电技术应用,2014,29(04):50-53+60.
