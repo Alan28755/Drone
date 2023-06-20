@@ -602,19 +602,9 @@ Shader "Hidden/Shader/Infrared_process"
 
 缺点：温度贴图制作难度较大
 
-实现：
+实现：使用**Amplify Shader Editor**编写。
 
-**R通道：**
-
-![image-20230619175637297](README/image-20230619175637297.png)
-
-**G通道：**
-
-![image-20230619175826344](README/image-20230619175826344.png)
-
-**B通道：**
-
-![image-20230619175919475](README/image-20230619175919475.png)
+![image-20230620122851506](README/image-20230620122851506.png)
 
 ## AI识别相关
 
