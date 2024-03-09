@@ -253,11 +253,11 @@ PBR的一个重要优点是，由于它基于物理原理，所以创建的材�
 
 # 总体设计
 
-![pako_eNpdlN1OGkEUx1-F7LW-ABdNRPAbv8DPwYuNbCtpAUPxojEmJIBKlixUW7AsZYvFFGgEbGncrkJfZmdmeYsOOwMZnKv5_c8_mTPnzJlT4TAalASn8CYmHh85_K5AxEHWDMBKG94mTV1BxW-mYaCyYV00Yatk_s0cUI8LwFoDdT6hehXJGhNnAdQM01BwpoHz57iUwmUNtioopSH](.\README\框架图.png)
+![框架图](README/框架图.png)
 
 ## 天气模拟
 
-![image-20230619120519714](README\image-2023061912018155.png)
+<img src="README/image-2023061912018155.png" alt="image-2023061912018155" style="zoom:200%;" />
 
 ​		最终采用了**Procedural Worlds**开发的**HDRP TIME OF DAY**插件
 
@@ -398,7 +398,7 @@ Unity 提供了一个 HDRP 模板项目，可以使用它来快速设置 HDRP。
 
 Unity 会创建一个项目并自动安装 HDRP 包及其所有依赖项。Unity 打开模板项目后，可以看到主场景。具体如下所示：
 
-![GettingStarted1](README\GettingStarted1.png)
+<img src="README\GettingStarted1.png" alt="GettingStarted1" style="zoom:200%;" />
 
 ### 管线设置
 
@@ -419,7 +419,7 @@ Unity 会创建一个项目并自动安装 HDRP 包及其所有依赖项。Unity
 
 ### 光照
 
-![image-20230619120218155](README\image-20230619120218155.png)
+<img src="README\image-20230619120218155.png" alt="image-20230619120218155" style="zoom:200%;" />
 
 为了在场景中应用逼真的光照，HDRP 使用物理光单位 (PLU)，这种单位基于真实的可测量值，就像在商店中寻找灯泡或使用摄影测光表来测光时所看到的单位一样。请注意，为使光源在使用 PLU 时正常工作，需要遵循 HDRP 单位约定（1 个 Unity 单位等于 1 米）。
 
@@ -467,7 +467,7 @@ $$
 
 ​		效果：
 
-![image-20230619170411536](README/image-20230619170411536.png)
+<img src="README/image-20230619170411536.png" alt="image-20230619170411536" style="zoom:200%;" />
 
 
 
@@ -481,7 +481,7 @@ $$
 
 效果：
 
-![image-20230619155312726](README\image-20230619155312726.png)
+<img src="README\image-20230619155312726.png" alt="image-20230619155312726" style="zoom:200%;" />
 
 缺点：
 
@@ -598,13 +598,13 @@ Shader "Hidden/Shader/Infrared_process"
 
 效果：
 
-![image-20230619171102237](README/image-20230619171102237.png)
+<img src="README/image-20230619171102237.png" alt="image-20230619171102237" style="zoom:200%;" />
 
 缺点：温度贴图制作难度较大
 
 实现：使用**Amplify Shader Editor**编写。
 
-![image-20230620122851506](README/image-20230620122851506.png)
+<img src="README/image-20230620122851506.png" alt="image-20230620122851506" style="zoom:200%;" />
 
 ## AI识别相关
 
@@ -639,11 +639,11 @@ Shader "Hidden/Shader/Infrared_process"
 
 ​		在训练无人机模型时，最开始使用的是Yolov5s模型，Yolov5一共有四个模型，分别为Yolov5s、Yolov5m、Yolov5l、Yolov5x。Yolov5s网络最小，速度最少，AP精度也最低，如果检测的以大目标为主，追求速度，倒也是个不错的选择。其他的三种网络，在此基础上，不断加深加宽网络，AP精度也不断提升，但速度的消耗也在不断增加。在使用Yolov5模型训练结束后发现精度不够，遂改用Yolov5l模型重新训练（由于电脑原因无法使用Yolov5s训练，只能选择Yolov5l模型）。
 
-![image-20230619233236856](README/image-20230619233236856.png)
+<img src="README/image-20230619233236856.png" alt="image-20230619233236856" style="zoom:200%;" />
 
-![image-20230619233341900](README/image-20230619233341900.png)
+<img src="README/image-20230619233341900.png" alt="image-20230619233341900" style="zoom:200%;" />
 
-![image-20230619233417925](README/image-20230619233417925.png)
+<img src="README/image-20230619233417925.png" alt="image-20230619233417925" style="zoom:200%;" />
 
 ## 用户界面
 
@@ -667,19 +667,17 @@ Shader "Hidden/Shader/Infrared_process"
 
 ## 设置界面：
 
-![image-20230619230511331](README/image-20230619230511331.png)
+<img src="README/image-20230619230511331.png" alt="image-20230619230511331" style="zoom:200%;" />
 
-## 可见光示例场景：
+## 示例场景：
 
-![image-20230619230813277](README/image-20230619230813277.png)
 
-## 红外光示例场景：
 
-![image-20230619230906857](README/image-20230619230906857.png)
+<img src="README/image-20230619120218155.png" alt="image-20230619120218155" style="zoom:200%;" /><img src="README/image-20230619230906857.png" alt="image-20230619230906857" style="zoom:200%;" />
 
 经测试系统各项功能运行正常，渲染出的视频也可被物体检测算法识别：
 
-![image-20230619231546378](README/image-20230619231546378.png)
+<img src="README/image-20230619231546378.png" alt="image-20230619231546378" style="zoom:200%;" />
 
 
 
